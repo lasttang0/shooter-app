@@ -2,17 +2,17 @@ import sys
 
 import pygame
 
-from utils.constants import Colors, FPS
+from utils.constants import GameStates, Colors, FPS
 
 
 class GameController:
     def __init__(self, model, view):
         self.model = model
         self.view = view
-        self.running = True
+        self.game_state = GameStates.RUNNING
 
     def start_game(self):
-        while self.running:
+        while self.game_state is GameStates.RUNNING:
             self.view.clock.tick(FPS)
             self.handle_events()
             self.render_game()
@@ -22,7 +22,7 @@ class GameController:
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.running = False
+                self.game_state = GameStates.EXIT
 
     def update_game(self):
         self.model.all_sprites.update()

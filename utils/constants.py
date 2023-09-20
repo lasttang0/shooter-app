@@ -10,8 +10,8 @@ PLAYER_SPEED = 0
 
 
 class GameStates(Enum):
-    PLAYING = 1
-    GAME_OVER = 2
+    RUNNING = 1
+    EXIT = 2
 
 
 class Colors(Enum):
