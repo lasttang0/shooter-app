@@ -15,22 +15,21 @@ class GameController:
         while self.running:
             self.view.clock.tick(FPS)
             self.handle_events()
-            self.update_game()
             self.render_game()
-            self.quit_game()
+            self.update_game()
+        self.quit_game()
 
-    @staticmethod
-    def handle_events():
+    def handle_events(self):
         for event in pygame.event.get():
-            # check for closing window
             if event.type == pygame.QUIT:
-                running = False
+                self.running = False
 
     def update_game(self):
-        pass
+        self.model.all_sprites.update()
 
     def render_game(self):
-        self.view.screen.fill(Colors.BLACK)
+        self.view.screen.fill(Colors.BLACK.value)
+        self.model.all_sprites.draw(self.view.screen)
         pygame.display.flip()
 
     @staticmethod

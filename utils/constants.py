@@ -1,8 +1,12 @@
 from enum import Enum
 
-WIDTH = 480
-HEIGHT = 600
+SCREEN_WIDTH = 480
+SCREEN_HEIGHT = 600
 FPS = 60
+
+PLAYER_WIDTH = 50
+PLAYER_HEIGTH = 40
+PLAYER_SPEED = 0
 
 
 class GameStates(Enum):
