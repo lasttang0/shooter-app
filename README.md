@@ -1,2 +1,2 @@
 # shooter-app
-Sample game project written using the Pygame library
+Sample MVC game project written using the Pygame library
