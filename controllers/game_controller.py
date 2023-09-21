@@ -1,8 +1,10 @@
+import random
 import sys
+from os import path
 
 import pygame
 
-from utils.constants import GameStates, FPS, ASTEROID_WIDTH
+from utils.constants import GameStates, FPS, ASTEROID_WIDTH, SND_DIR, EXPLOSION_LIST
 
 
 class GameController:
@@ -32,6 +34,7 @@ class GameController:
                                           pygame.sprite.collide_circle)
         for hit in hits:
             self.model.score += ASTEROID_WIDTH - hit.radius
+            pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_LIST))).play()
         self.model.add_asteroids(len(hits))
         collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False,
                                                pygame.sprite.collide_circle)

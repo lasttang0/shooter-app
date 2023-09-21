@@ -4,13 +4,13 @@ import pygame
 
 from utils.constants import (IMG_DIR, Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
-                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE, COLLIDE_RADIUS, )
+                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE, COLLIDE_RADIUS, STARSHIP, )
 
 
 class PlayerModel(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, "starship.png")).convert(),
+        self.image = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, STARSHIP)).convert(),
                                             (PLAYER_WIDTH, PLAYER_HEIGHT))
         self.image.set_colorkey(Colors.BLACK.value)
         self.rect = self.image.get_rect()

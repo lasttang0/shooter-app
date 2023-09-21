@@ -5,7 +5,7 @@ import pygame
 from models.player_model import PlayerModel
 from models.asteroid_model import AsteroidModel
 from models.rocket_model import RocketModel
-from utils.constants import COUNT
+from utils.constants import COUNT, SND_DIR, PEW
 
 
 class GameModel:
@@ -32,3 +32,5 @@ class GameModel:
         rocket = RocketModel(x, y)
         self.all_sprites.add(rocket)
         self.rockets.add(rocket)
+        pygame.mixer.Sound(path.join(SND_DIR, PEW)).play()
+

@@ -2,16 +2,24 @@ from os import path
 
 import pygame
 
-from utils.constants import IMG_DIR, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE, Colors
+from utils.constants import IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE, Colors, SND_DIR, SPACE_MUSIC
 
 
 class GameView:
     def __init__(self):
         pygame.init()
+        self.play_music()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Shooter Game")
         self.clock = pygame.time.Clock()
-        self.background = pygame.image.load(path.join(IMG_DIR, "sky.png")).convert()
+        self.background = pygame.image.load(path.join(IMG_DIR, SKY)).convert()
+
+    @staticmethod
+    def play_music():
+        pygame.mixer.init()
+        pygame.mixer.music.load(path.join(SND_DIR, SPACE_MUSIC))
+        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play(loops=-1)
 
     def render_game(self, model):
         self.screen.fill(Colors.BLACK.value)
