@@ -10,6 +10,8 @@ config.read('utils/config.ini')
 SCREEN_WIDTH = config.getint('ScreenSettings', 'SCREEN_WIDTH')
 SCREEN_HEIGHT = config.getint('ScreenSettings', 'SCREEN_HEIGHT')
 FPS = config.getint('ScreenSettings', 'FPS')
+FONT = config.get('ScreenSettings', 'FONT')
+FONT_SIZE = config.getint('ScreenSettings', 'FONT_SIZE')
 
 PLAYER_WIDTH = config.getint('PlayerSettings', 'PLAYER_WIDTH')
 PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
@@ -17,6 +19,8 @@ PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
 SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 COLLIDE_RADIUS = config.getint('PlayerSettings', 'COLLIDE_RADIUS')
 
+ASTEROID_LIST = ["asteroid1.png", "asteroid2.png", "asteroid3.png", "asteroid4.png"]
+ASTEROID_SIZES = [0.8, 1, 1.1, 1.2, 1.75]
 COUNT = config.getint('AsteroidSettings', 'COUNT')
 ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
 ASTEROID_HEIGHT = config.getint('AsteroidSettings', 'ASTEROID_HEIGHT')
@@ -33,6 +37,7 @@ ROCKET_WIDTH = config.getint('RocketSettings', 'ROCKET_WIDTH')
 ROCKET_HEIGHT = config.getint('RocketSettings', 'ROCKET_HEIGHT')
 ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
 HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
+
 
 
 class GameStates(Enum):

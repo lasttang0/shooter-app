@@ -16,6 +16,7 @@ class GameModel:
         self.rockets = pygame.sprite.Group()
         self.add_player()
         self.add_asteroids(COUNT)
+        self.score = 0
 
     def add_player(self):
         self.player = PlayerModel()
