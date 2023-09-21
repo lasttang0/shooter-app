@@ -1,9 +1,8 @@
-import sys
-
 import pygame
 
+from models.game_model import GameModel
 from models.explosion_model import ExplosionModel
-from utils.constants import GameStates, FPS, ASTEROID_WIDTH, Explosions, DYING_TIME
+from utils.constants import GameStates, FPS, ASTEROID_WIDTH, Explosions, DYING_TIME, HEALTH
 
 
 class GameController:
@@ -11,14 +10,18 @@ class GameController:
         self.model = model
         self.view = view
         self.game_state = GameStates.RUNNING
+        self.game_over = True
 
     def start_game(self):
         while self.game_state is GameStates.RUNNING:
+            if self.game_over:
+                self.view.open_screen()
+                self.game_over = False
+                self.model = GameModel()
             self.view.clock.tick(FPS)
             self.handle_events()
             self.view.render_game(self.model)
             self.update_game()
-        self.quit_game()
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -50,13 +53,11 @@ class GameController:
                 self.model.player.death_moment = pygame.time.get_ticks()
                 self.model.player.hide()
                 self.model.player.lives -= 1
-                self.model.player.health = 100
+                self.model.player.health = HEALTH
         if (self.model.player.lives == 0 and self.model.player.death_moment and
                 pygame.time.get_ticks() - self.model.player.death_moment >= DYING_TIME):
             # self.model.player.kill()
-            self.game_state = GameStates.EXIT
+            # self.game_state = GameStates.EXIT
+            self.game_over = True
 
-    @staticmethod
-    def quit_game():
-        pygame.quit()
-        sys.exit()
+

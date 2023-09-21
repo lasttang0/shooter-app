@@ -1,10 +1,11 @@
+import sys
 from os import path
 
 import pygame
 
 from utils.constants import (IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE,
                              Colors, SND_DIR, SPACE_MUSIC, BAR_HEIGHT, MUSIC_VOLUME, STARSHIP, PLAYER_WIDTH,
-                             PLAYER_HEIGHT)
+                             PLAYER_HEIGHT, FPS)
 
 
 class GameView:
@@ -12,9 +13,25 @@ class GameView:
         pygame.init()
         self.play_music()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Shooter Game")
+        pygame.display.set_caption("Space Shooter Game")
         self.clock = pygame.time.Clock()
         self.background = pygame.image.load(path.join(IMG_DIR, SKY)).convert()
+
+    def open_screen(self):
+        self.screen.blit(self.background, self.background.get_rect())
+        self.draw_text(self.screen, "Shooter app!", 64, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 4)
+        self.draw_text(self.screen, "Left / right to move, Space to fire", 22,
+                       SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        self.draw_text(self.screen, "Press a key to begin", 18, SCREEN_WIDTH / 2, SCREEN_HEIGHT * 3 / 4)
+        pygame.display.flip()
+        waiting = True
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.quit_game()
+                if event.type == pygame.KEYUP:
+                    waiting = False
 
     @staticmethod
     def play_music():
@@ -61,3 +78,8 @@ class GameView:
             image_rect.x = x + 40 * i
             image_rect.y = y
             screen.blit(image, image_rect)
+
+    @staticmethod
+    def quit_game():
+        pygame.quit()
+        sys.exit()
