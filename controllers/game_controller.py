@@ -30,16 +30,21 @@ class GameController:
 
     def update_game(self):
         self.model.all_sprites.update()
+
         hits = pygame.sprite.groupcollide(self.model.asteroids, self.model.rockets, True, True,
                                           pygame.sprite.collide_circle)
         for hit in hits:
             self.model.score += ASTEROID_WIDTH - hit.radius
             pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_LIST))).play()
         self.model.add_asteroids(len(hits))
-        collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False,
+
+        collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, True,
                                                pygame.sprite.collide_circle)
-        if collides:
-            self.game_state = GameStates.EXIT
+        for collide in collides:
+            self.model.player.health -= collide.radius * 1.5
+            self.model.add_asteroids(len(collides))
+            if self.model.player.health <= 0:
+                self.game_state = GameStates.EXIT
 
     @staticmethod
     def quit_game():

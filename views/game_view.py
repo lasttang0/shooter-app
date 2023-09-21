@@ -2,7 +2,8 @@ from os import path
 
 import pygame
 
-from utils.constants import IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE, Colors, SND_DIR, SPACE_MUSIC
+from utils.constants import (IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE,
+                             Colors, SND_DIR, SPACE_MUSIC, BAR_HEIGHT)
 
 
 class GameView:
@@ -26,6 +27,7 @@ class GameView:
         self.screen.blit(self.background, self.background.get_rect())
         model.all_sprites.draw(self.screen)
         self.draw_text(self.screen, f'Score: {str(model.score)}', FONT_SIZE, SCREEN_WIDTH * 6/7, 10)
+        self.draw_health_bar(self.screen, 5, 10, model.player.health)
         pygame.display.flip()
 
     @staticmethod
@@ -36,3 +38,14 @@ class GameView:
         text_rect = text_surface.get_rect()
         text_rect.midtop = (x, y)
         screen.blit(text_surface, text_rect)
+
+    @staticmethod
+    def draw_health_bar(screen, x, y, pct):
+        if pct < 0:
+            pct = 0
+        bar_length = SCREEN_WIDTH / 5
+        fill = (pct / 100) * bar_length
+        outline_rect = pygame.Rect(x, y, bar_length, BAR_HEIGHT)
+        fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
+        pygame.draw.rect(screen, Colors.GREEN.value, fill_rect)
+        pygame.draw.rect(screen, Colors.WHITE.value, outline_rect, 2)

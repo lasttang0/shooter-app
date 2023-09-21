@@ -4,7 +4,8 @@ import pygame
 
 from utils.constants import (IMG_DIR, Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
-                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE, COLLIDE_RADIUS, STARSHIP, )
+                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE,
+                             COLLIDE_RADIUS, STARSHIP, HEALTH, )
 
 
 class PlayerModel(pygame.sprite.Sprite):
@@ -15,6 +16,7 @@ class PlayerModel(pygame.sprite.Sprite):
         self.image.set_colorkey(Colors.BLACK.value)
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH / 2, SCREEN_HEIGHT - PLAYER_HEIGHT / 2)
+        self.health = HEALTH
         self.speed_x = PLAYER_SPEED
         self.radius = COLLIDE_RADIUS
 

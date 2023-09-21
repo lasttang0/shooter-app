@@ -23,9 +23,11 @@ PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
 PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
 SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 COLLIDE_RADIUS = config.getint('PlayerSettings', 'COLLIDE_RADIUS')
+HEALTH = config.getint('PlayerSettings', 'HEALTH')
+BAR_HEIGHT = config.getint('PlayerSettings', 'BAR_HEIGHT')
 
 ASTEROID_LIST = ['asteroid1.png', 'asteroid2.png', 'asteroid3.png', 'asteroid4.png']
-ASTEROID_SIZES = [0.8, 1, 1.1, 1.2, 1.75]
+ASTEROID_SIZES = [0.8, 1, 1, 1, 1.4, 1.5, 1.75]
 EXPLOSION_LIST = ['explosion1.wav', 'explosion2.wav']
 COUNT = config.getint('AsteroidSettings', 'COUNT')
 ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
