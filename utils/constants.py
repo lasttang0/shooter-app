@@ -1,12 +1,17 @@
+import configparser
 from enum import Enum
 
-SCREEN_WIDTH = 480
-SCREEN_HEIGHT = 600
-FPS = 60
+config = configparser.ConfigParser()
+config.read('utils/config.ini')
 
-PLAYER_WIDTH = 50
-PLAYER_HEIGTH = 40
-PLAYER_SPEED = 0
+SCREEN_WIDTH = config.getint('ScreenSettings', 'SCREEN_WIDTH')
+SCREEN_HEIGHT = config.getint('ScreenSettings', 'SCREEN_HEIGHT')
+FPS = config.getint('ScreenSettings', 'FPS')
+
+PLAYER_WIDTH = config.getint('PlayerSettings', 'PLAYER_WIDTH')
+PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
+PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
+SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 
 
 class GameStates(Enum):

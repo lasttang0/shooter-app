@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from utils.constants import GameStates, Colors, FPS
+from utils.constants import Colors, GameStates, FPS
 
 
 class GameController:

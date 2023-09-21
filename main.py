@@ -1,5 +1,4 @@
 from controllers.game_controller import GameController
-from models.player_model import PlayerModel
 from views.game_view import GameView
 from models.game_model import GameModel
 
