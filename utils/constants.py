@@ -13,6 +13,16 @@ PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
 PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
 SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 
+COUNT = config.getint('AsteroidSettings', 'COUNT')
+ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
+ASTEROID_HEIGHT = config.getint('AsteroidSettings', 'ASTEROID_HEIGHT')
+SPAWN_Y_MIN = config.getint('AsteroidSettings', 'SPAWN_Y_MIN')
+SPAWN_Y_MAX = config.getint('AsteroidSettings', 'SPAWN_Y_MAX')
+ASTEROID_SPEED_X_MIN = config.getint('AsteroidSettings', 'ASTEROID_SPEED_X_MIN')
+ASTEROID_SPEED_X_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_X_MAX')
+ASTEROID_SPEED_Y_MIN = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MIN')
+ASTEROID_SPEED_Y_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MAX')
+
 
 class GameStates(Enum):
     RUNNING = 1
