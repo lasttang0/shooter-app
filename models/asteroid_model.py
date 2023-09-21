@@ -5,8 +5,7 @@ import pygame
 from utils.constants import (Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
                              ASTEROID_WIDTH, ASTEROID_HEIGHT, SPAWN_Y_MIN, SPAWN_Y_MAX,
-                             ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX, ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX,
-                             )
+                             ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX, ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
 
 
 class AsteroidModel(pygame.sprite.Sprite):

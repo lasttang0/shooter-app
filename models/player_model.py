@@ -1,4 +1,6 @@
 import pygame
+
+from models.rocket_model import RocketModel
 from utils.constants import (Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
                              PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE)
@@ -25,3 +27,4 @@ class PlayerModel(pygame.sprite.Sprite):
             self.rect.right = SCREEN_WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
+

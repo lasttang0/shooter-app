@@ -23,6 +23,10 @@ ASTEROID_SPEED_X_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_X_MAX')
 ASTEROID_SPEED_Y_MIN = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MIN')
 ASTEROID_SPEED_Y_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MAX')
 
+ROCKET_WIDTH = config.getint('RocketSettings', 'ROCKET_WIDTH')
+ROCKET_HEIGHT = config.getint('RocketSettings', 'ROCKET_HEIGHT')
+ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
+
 
 class GameStates(Enum):
     RUNNING = 1
@@ -35,3 +39,5 @@ class Colors(Enum):
     RED = (255, 0, 0)
     GREEN = (0, 255, 0)
     BLUE = (0, 0, 255)
+    YELLOW = (255, 255, 0)
+    ORANGE = (255, 165, 0)

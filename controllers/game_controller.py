@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+from models.rocket_model import RocketModel
 from utils.constants import Colors, GameStates, FPS
 
 
@@ -23,6 +24,8 @@ class GameController:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.game_state = GameStates.EXIT
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                self.model.add_rocket(self.model.player.rect.centerx, self.model.player.rect.top)
 
     def update_game(self):
         self.model.all_sprites.update()
