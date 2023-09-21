@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+from models.asteroid_model import AsteroidModel
 from models.rocket_model import RocketModel
 from utils.constants import Colors, GameStates, FPS
 
@@ -29,6 +30,11 @@ class GameController:
 
     def update_game(self):
         self.model.all_sprites.update()
+        hits = pygame.sprite.groupcollide(self.model.asteroids, self.model.rockets, True, True)
+        for _ in hits:
+            asteroid = AsteroidModel()
+            self.model.all_sprites.add(asteroid)
+            self.model.asteroids.add(asteroid)
         hits = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False)
         if hits:
             self.game_state = GameStates.EXIT
