@@ -26,6 +26,9 @@ class GameController:
 
     def update_game(self):
         self.model.all_sprites.update()
+        hits = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False)
+        if hits:
+            self.game_state = GameStates.EXIT
 
     def render_game(self):
         self.view.screen.fill(Colors.BLACK.value)
