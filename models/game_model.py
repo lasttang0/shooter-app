@@ -13,13 +13,13 @@ class GameModel:
         self.asteroids = pygame.sprite.Group()
         self.rockets = pygame.sprite.Group()
         self.add_player()
-        self.add_asteroids()
+        self.add_asteroids(COUNT)
 
     def add_player(self):
         self.all_sprites.add(self.player)
 
-    def add_asteroids(self):
-        for _ in range(COUNT):
+    def add_asteroids(self, count):
+        for _ in range(count):
             asteroid = AsteroidModel()
             self.all_sprites.add(asteroid)
             self.asteroids.add(asteroid)
