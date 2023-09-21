@@ -16,8 +16,11 @@ FPS = config.getint('ScreenSettings', 'FPS')
 FONT = config.get('ScreenSettings', 'FONT')
 FONT_SIZE = config.getint('ScreenSettings', 'FONT_SIZE')
 
+MUSIC_VOLUME = config.getfloat('SoundSettings', 'MUSIC_VOLUME')
+
 STARSHIP = 'starship.png'
 PEW = 'pew.wav'
+LIVES = config.getint('PlayerSettings', 'LIVES')
 PLAYER_WIDTH = config.getint('PlayerSettings', 'PLAYER_WIDTH')
 PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
 PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
@@ -25,6 +28,7 @@ SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 COLLIDE_RADIUS = config.getint('PlayerSettings', 'COLLIDE_RADIUS')
 HEALTH = config.getint('PlayerSettings', 'HEALTH')
 BAR_HEIGHT = config.getint('PlayerSettings', 'BAR_HEIGHT')
+HIDING_TIME = config.getint('PlayerSettings', 'HIDING_TIME')
 DYING_TIME = config.getint('PlayerSettings', 'DYING_TIME')
 
 ASTEROID_LIST = ['asteroid1.png', 'asteroid2.png', 'asteroid3.png', 'asteroid4.png']

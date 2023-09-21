@@ -41,15 +41,19 @@ class GameController:
         collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, True,
                                                pygame.sprite.collide_circle)
         for collide in collides:
-            self.model.player.health -= collide.radius * 1.5
+            self.model.player.health -= collide.radius
             ExplosionModel.play_sound()
             self.model.add_explosion(collide.rect.center, Explosions.SMALL)
             self.model.add_asteroids(len(collides))
             if self.model.player.health <= 0:
                 self.model.add_explosion(collide.rect.center, Explosions.DEATH)
                 self.model.player.death_moment = pygame.time.get_ticks()
-                self.model.player.kill()
-        if self.model.player.death_moment and pygame.time.get_ticks() - self.model.player.death_moment >= DYING_TIME:
+                self.model.player.hide()
+                self.model.player.lives -= 1
+                self.model.player.health = 100
+        if (self.model.player.lives == 0 and self.model.player.death_moment and
+                pygame.time.get_ticks() - self.model.player.death_moment >= DYING_TIME):
+            # self.model.player.kill()
             self.game_state = GameStates.EXIT
 
     @staticmethod

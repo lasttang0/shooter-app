@@ -3,7 +3,8 @@ from os import path
 import pygame
 
 from utils.constants import (IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE,
-                             Colors, SND_DIR, SPACE_MUSIC, BAR_HEIGHT)
+                             Colors, SND_DIR, SPACE_MUSIC, BAR_HEIGHT, MUSIC_VOLUME, STARSHIP, PLAYER_WIDTH,
+                             PLAYER_HEIGHT)
 
 
 class GameView:
@@ -19,7 +20,7 @@ class GameView:
     def play_music():
         pygame.mixer.init()
         pygame.mixer.music.load(path.join(SND_DIR, SPACE_MUSIC))
-        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.set_volume(MUSIC_VOLUME)
         pygame.mixer.music.play(loops=-1)
 
     def render_game(self, model):
@@ -28,6 +29,9 @@ class GameView:
         model.all_sprites.draw(self.screen)
         self.draw_text(self.screen, f'Score: {str(model.score)}', FONT_SIZE, SCREEN_WIDTH * 6/7, 10)
         self.draw_health_bar(self.screen, 5, 10, model.player.health)
+        life_pic = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, STARSHIP)).convert(),
+                                            (PLAYER_WIDTH / 3, PLAYER_HEIGHT / 3))
+        self.draw_lives(self.screen, 5, 30, model.player.lives, life_pic)
         pygame.display.flip()
 
     @staticmethod
@@ -49,3 +53,11 @@ class GameView:
         fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
         pygame.draw.rect(screen, Colors.GREEN.value, fill_rect)
         pygame.draw.rect(screen, Colors.WHITE.value, outline_rect, 2)
+
+    @staticmethod
+    def draw_lives(screen, x, y, lives, image):
+        for i in range(lives):
+            image_rect = image.get_rect()
+            image_rect.x = x + 40 * i
+            image_rect.y = y
+            screen.blit(image, image_rect)
