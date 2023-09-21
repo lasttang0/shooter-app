@@ -25,6 +25,7 @@ SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
 COLLIDE_RADIUS = config.getint('PlayerSettings', 'COLLIDE_RADIUS')
 HEALTH = config.getint('PlayerSettings', 'HEALTH')
 BAR_HEIGHT = config.getint('PlayerSettings', 'BAR_HEIGHT')
+DYING_TIME = config.getint('PlayerSettings', 'DYING_TIME')
 
 ASTEROID_LIST = ['asteroid1.png', 'asteroid2.png', 'asteroid3.png', 'asteroid4.png']
 ASTEROID_SIZES = [0.8, 1, 1, 1, 1.4, 1.5, 1.75]
@@ -48,6 +49,7 @@ HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 EXPLOSION_SOUND = ['explosion1.wav', 'explosion2.wav']
 LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
 SMALL_SIZE = config.getint('ExplosionSettings', 'SMALL_SIZE')
+DEATH_SIZE = config.getint('ExplosionSettings', 'DEATH_SIZE')
 
 
 class GameStates(Enum):
@@ -68,3 +70,4 @@ class Colors(Enum):
 class Explosions(Enum):
     LARGE = 0
     SMALL = 1
+    DEATH = 2

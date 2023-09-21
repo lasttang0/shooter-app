@@ -19,6 +19,7 @@ class PlayerModel(pygame.sprite.Sprite):
         self.health = HEALTH
         self.speed_x = PLAYER_SPEED
         self.radius = COLLIDE_RADIUS
+        self.death_moment = None
 
 
     def update(self):

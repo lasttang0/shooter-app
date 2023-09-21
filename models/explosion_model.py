@@ -1,8 +1,9 @@
+import random
 from os import path
 
 import pygame
 
-from utils.constants import IMG_DIR, Colors, Explosions, LARGE_SIZE, SMALL_SIZE
+from utils.constants import IMG_DIR, Colors, Explosions, LARGE_SIZE, SMALL_SIZE, DEATH_SIZE, SND_DIR, EXPLOSION_SOUND
 
 
 class ExplosionModel(pygame.sprite.Sprite):
@@ -22,6 +23,7 @@ class ExplosionModel(pygame.sprite.Sprite):
         animation = {
             Explosions.LARGE: [],
             Explosions.SMALL: [],
+            Explosions.DEATH: [],
         }
         for x in range(9):
             file = f'explosion{x}.png'
@@ -29,6 +31,7 @@ class ExplosionModel(pygame.sprite.Sprite):
             image.set_colorkey(Colors.BLACK.value)
             animation[Explosions.LARGE].append(pygame.transform.scale(image, (LARGE_SIZE, LARGE_SIZE)))
             animation[Explosions.SMALL].append(pygame.transform.scale(image, (SMALL_SIZE, SMALL_SIZE)))
+            animation[Explosions.DEATH].append(pygame.transform.scale(image, (DEATH_SIZE, DEATH_SIZE)))
         return animation
 
     def update(self):
@@ -43,3 +46,7 @@ class ExplosionModel(pygame.sprite.Sprite):
                 self.image = self.animation[self.size][self.frame]
                 self.rect = self.image.get_rect()
                 self.rect.center = center
+
+    @staticmethod
+    def play_sound():
+        pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()

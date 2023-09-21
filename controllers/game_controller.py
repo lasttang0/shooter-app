@@ -1,10 +1,9 @@
-import random
 import sys
-from os import path
 
 import pygame
 
-from utils.constants import GameStates, FPS, ASTEROID_WIDTH, SND_DIR, EXPLOSION_SOUND, Explosions
+from models.explosion_model import ExplosionModel
+from utils.constants import GameStates, FPS, ASTEROID_WIDTH, Explosions, DYING_TIME
 
 
 class GameController:
@@ -35,7 +34,7 @@ class GameController:
                                           pygame.sprite.collide_circle)
         for hit in hits:
             self.model.score += ASTEROID_WIDTH - hit.radius
-            pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
+            ExplosionModel.play_sound()
             self.model.add_explosion(hit.rect.center, Explosions.LARGE)
             self.model.add_asteroids(len(hits))
 
@@ -43,10 +42,15 @@ class GameController:
                                                pygame.sprite.collide_circle)
         for collide in collides:
             self.model.player.health -= collide.radius * 1.5
+            ExplosionModel.play_sound()
             self.model.add_explosion(collide.rect.center, Explosions.SMALL)
             self.model.add_asteroids(len(collides))
             if self.model.player.health <= 0:
-                self.game_state = GameStates.EXIT
+                self.model.add_explosion(collide.rect.center, Explosions.DEATH)
+                self.model.player.death_moment = pygame.time.get_ticks()
+                self.model.player.kill()
+        if self.model.player.death_moment and pygame.time.get_ticks() - self.model.player.death_moment >= DYING_TIME:
+            self.game_state = GameStates.EXIT
 
     @staticmethod
     def quit_game():
