@@ -4,7 +4,7 @@ from os import path
 
 import pygame
 
-from utils.constants import GameStates, FPS, ASTEROID_WIDTH, SND_DIR, EXPLOSION_LIST
+from utils.constants import GameStates, FPS, ASTEROID_WIDTH, SND_DIR, EXPLOSION_SOUND, Explosions
 
 
 class GameController:
@@ -35,13 +35,15 @@ class GameController:
                                           pygame.sprite.collide_circle)
         for hit in hits:
             self.model.score += ASTEROID_WIDTH - hit.radius
-            pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_LIST))).play()
-        self.model.add_asteroids(len(hits))
+            pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
+            self.model.add_explosion(hit.rect.center, Explosions.LARGE)
+            self.model.add_asteroids(len(hits))
 
         collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, True,
                                                pygame.sprite.collide_circle)
         for collide in collides:
             self.model.player.health -= collide.radius * 1.5
+            self.model.add_explosion(collide.rect.center, Explosions.SMALL)
             self.model.add_asteroids(len(collides))
             if self.model.player.health <= 0:
                 self.game_state = GameStates.EXIT

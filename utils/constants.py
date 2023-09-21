@@ -28,7 +28,6 @@ BAR_HEIGHT = config.getint('PlayerSettings', 'BAR_HEIGHT')
 
 ASTEROID_LIST = ['asteroid1.png', 'asteroid2.png', 'asteroid3.png', 'asteroid4.png']
 ASTEROID_SIZES = [0.8, 1, 1, 1, 1.4, 1.5, 1.75]
-EXPLOSION_LIST = ['explosion1.wav', 'explosion2.wav']
 COUNT = config.getint('AsteroidSettings', 'COUNT')
 ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
 ASTEROID_HEIGHT = config.getint('AsteroidSettings', 'ASTEROID_HEIGHT')
@@ -46,11 +45,14 @@ ROCKET_HEIGHT = config.getint('RocketSettings', 'ROCKET_HEIGHT')
 ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
 HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 
+EXPLOSION_SOUND = ['explosion1.wav', 'explosion2.wav']
+LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
+SMALL_SIZE = config.getint('ExplosionSettings', 'SMALL_SIZE')
 
 
 class GameStates(Enum):
-    RUNNING = 1
-    EXIT = 2
+    RUNNING = 0
+    EXIT = 1
 
 
 class Colors(Enum):
@@ -61,3 +63,8 @@ class Colors(Enum):
     BLUE = (0, 0, 255)
     YELLOW = (255, 255, 0)
     ORANGE = (255, 125, 0)
+
+
+class Explosions(Enum):
+    LARGE = 0
+    SMALL = 1

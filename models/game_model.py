@@ -5,6 +5,7 @@ import pygame
 from models.player_model import PlayerModel
 from models.asteroid_model import AsteroidModel
 from models.rocket_model import RocketModel
+from models.explosion_model import ExplosionModel
 from utils.constants import COUNT, SND_DIR, PEW
 
 
@@ -33,4 +34,8 @@ class GameModel:
         self.all_sprites.add(rocket)
         self.rockets.add(rocket)
         pygame.mixer.Sound(path.join(SND_DIR, PEW)).play()
+
+    def add_explosion(self, center, size):
+        explosion = ExplosionModel(center,size)
+        self.all_sprites.add(explosion)
 

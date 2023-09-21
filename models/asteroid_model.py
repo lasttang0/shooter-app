@@ -16,7 +16,8 @@ class AsteroidModel(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         some_asteroid = random.choice(ASTEROID_LIST)
         scale = random.choice(ASTEROID_SIZES)
-        self.image_orig = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, some_asteroid)).convert(),
+        self.image_orig = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, 'asteroids',
+                                                                             some_asteroid)).convert(),
                                                  (ASTEROID_WIDTH * scale, ASTEROID_HEIGHT * scale))
         self.image_orig.set_colorkey(Colors.BLACK.value)
         self.image = self.image_orig.copy()
