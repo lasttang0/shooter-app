@@ -1,8 +1,9 @@
 import random
+from os import path
 
 import pygame
 
-from utils.constants import (Colors,
+from utils.constants import (Colors, IMG_DIR,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
                              ASTEROID_WIDTH, ASTEROID_HEIGHT, SPAWN_Y_MIN, SPAWN_Y_MAX,
                              ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX, ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
@@ -11,8 +12,9 @@ from utils.constants import (Colors,
 class AsteroidModel(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((ASTEROID_WIDTH, ASTEROID_HEIGHT))
-        self.image.fill(Colors.RED.value)
+        self.image = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, "asteroid1.png")).convert(),
+                                            (ASTEROID_WIDTH, ASTEROID_HEIGHT))
+        self.image.set_colorkey(Colors.BLACK.value)
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(SCREEN_WIDTH - self.rect.width)
         self.rect.y = random.randrange(SPAWN_Y_MIN, SPAWN_Y_MAX)

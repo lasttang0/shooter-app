@@ -1,3 +1,5 @@
+from os import path
+
 import pygame
 
 from models.player_model import PlayerModel
@@ -9,13 +11,14 @@ from utils.constants import COUNT
 class GameModel:
     def __init__(self):
         self.all_sprites = pygame.sprite.Group()
-        self.player = PlayerModel()
+        self.player = None
         self.asteroids = pygame.sprite.Group()
         self.rockets = pygame.sprite.Group()
         self.add_player()
         self.add_asteroids(COUNT)
 
     def add_player(self):
+        self.player = PlayerModel()
         self.all_sprites.add(self.player)
 
     def add_asteroids(self, count):
@@ -28,4 +31,3 @@ class GameModel:
         rocket = RocketModel(x, y)
         self.all_sprites.add(rocket)
         self.rockets.add(rocket)
-

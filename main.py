@@ -4,10 +4,10 @@ from models.game_model import GameModel
 
 
 def main():
-    model = GameModel()
     view = GameView()
+    model = GameModel()
     controller = GameController(model, view)
-    controller.start_game()
+    controller.start_game( )
 
 
 if __name__ == '__main__':

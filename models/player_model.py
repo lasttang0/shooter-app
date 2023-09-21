@@ -1,19 +1,21 @@
+from os import path
+
 import pygame
 
-from models.rocket_model import RocketModel
-from utils.constants import (Colors,
+from utils.constants import (IMG_DIR, Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
-                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE)
+                             PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE, )
 
 
 class PlayerModel(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface((PLAYER_WIDTH, PLAYER_HEIGHT))
+        self.image = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, "starship.png")).convert(),
+                                            (PLAYER_WIDTH, PLAYER_HEIGHT))
+        self.image.set_colorkey(Colors.BLACK.value)
         self.rect = self.image.get_rect()
-        self.rect.center = (SCREEN_WIDTH / 2, SCREEN_HEIGHT - 10)
+        self.rect.center = (SCREEN_WIDTH / 2, SCREEN_HEIGHT - PLAYER_HEIGHT / 2)
         self.speed_x = PLAYER_SPEED
-        self.image.fill(Colors.GREEN.value)
 
     def update(self):
         self.speed_x = PLAYER_SPEED
@@ -27,4 +29,3 @@ class PlayerModel(pygame.sprite.Sprite):
             self.rect.right = SCREEN_WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
-

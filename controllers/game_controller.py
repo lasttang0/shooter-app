@@ -17,7 +17,7 @@ class GameController:
         while self.game_state is GameStates.RUNNING:
             self.view.clock.tick(FPS)
             self.handle_events()
-            self.render_game()
+            self.view.render_game(self.model)
             self.update_game()
         self.quit_game()
 
@@ -36,10 +36,6 @@ class GameController:
         if collides:
             self.game_state = GameStates.EXIT
 
-    def render_game(self):
-        self.view.screen.fill(Colors.BLACK.value)
-        self.model.all_sprites.draw(self.view.screen)
-        pygame.display.flip()
 
     @staticmethod
     def quit_game():

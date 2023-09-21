@@ -1,5 +1,8 @@
 import configparser
 from enum import Enum
+from os import path
+
+IMG_DIR = path.join(path.dirname(__file__), '..\\assets\\images')
 
 config = configparser.ConfigParser()
 config.read('utils/config.ini')
@@ -40,4 +43,4 @@ class Colors(Enum):
     GREEN = (0, 255, 0)
     BLUE = (0, 0, 255)
     YELLOW = (255, 255, 0)
-    ORANGE = (255, 165, 0)
+    ORANGE = (255, 125, 0)
