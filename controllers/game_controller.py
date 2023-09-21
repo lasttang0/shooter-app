@@ -32,7 +32,7 @@ class GameController:
         self.model.all_sprites.update()
         hits = pygame.sprite.groupcollide(self.model.asteroids, self.model.rockets, True, True)
         self.model.add_asteroids(len(hits))
-        collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False)
+        collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, False, pygame.sprite.collide_circle)
         if collides:
             self.game_state = GameStates.EXIT
 

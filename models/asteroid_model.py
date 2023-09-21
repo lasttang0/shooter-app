@@ -20,6 +20,7 @@ class AsteroidModel(pygame.sprite.Sprite):
         self.rect.y = random.randrange(SPAWN_Y_MIN, SPAWN_Y_MAX)
         self.speed_x = random.randrange(ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX)
         self.speed_y = random.randrange(ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
+        self.radius = int(self.rect.width * .85 / 2)
 
     def update(self):
         self.rect.x += self.speed_x

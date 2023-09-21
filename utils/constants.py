@@ -15,6 +15,7 @@ PLAYER_WIDTH = config.getint('PlayerSettings', 'PLAYER_WIDTH')
 PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
 PLAYER_SPEED = config.getint('PlayerSettings', 'PLAYER_SPEED')
 SPEED_CHANGE = config.getint('PlayerSettings', 'SPEED_CHANGE')
+COLLIDE_RADIUS = config.getint('PlayerSettings', 'COLLIDE_RADIUS')
 
 COUNT = config.getint('AsteroidSettings', 'COUNT')
 ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
