@@ -26,10 +26,13 @@ ASTEROID_SPEED_X_MIN = config.getint('AsteroidSettings', 'ASTEROID_SPEED_X_MIN')
 ASTEROID_SPEED_X_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_X_MAX')
 ASTEROID_SPEED_Y_MIN = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MIN')
 ASTEROID_SPEED_Y_MAX = config.getint('AsteroidSettings', 'ASTEROID_SPEED_Y_MAX')
+ROTATION_SPEED_MIN = config.getint('AsteroidSettings', 'ROTATION_SPEED_MIN')
+ROTATION_SPEED_MAX = config.getint('AsteroidSettings', 'ROTATION_SPEED_MAX')
 
 ROCKET_WIDTH = config.getint('RocketSettings', 'ROCKET_WIDTH')
 ROCKET_HEIGHT = config.getint('RocketSettings', 'ROCKET_HEIGHT')
 ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
+HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 
 
 class GameStates(Enum):

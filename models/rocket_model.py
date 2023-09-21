@@ -3,7 +3,7 @@ import random
 import pygame
 
 from utils.constants import (Colors,
-                             ROCKET_WIDTH, ROCKET_HEIGHT, ROCKET_SPEED)
+                             ROCKET_WIDTH, ROCKET_HEIGHT, ROCKET_SPEED, HIT_RADIUS)
 
 
 class RocketModel(pygame.sprite.Sprite):
@@ -16,6 +16,7 @@ class RocketModel(pygame.sprite.Sprite):
         self.rect.bottom = y
         self.rect.centerx = x
         self.speed_y = ROCKET_SPEED
+        self.radius = HIT_RADIUS
 
     def update(self):
         self.rect.y += self.speed_y
