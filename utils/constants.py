@@ -24,9 +24,9 @@ FONT = config.get('ScreenSettings', 'FONT')
 FONT_SIZE = config.getint('ScreenSettings', 'FONT_SIZE')
 
 """
-Sound settings.
+Music settings.
 """
-MUSIC_VOLUME = config.getfloat('SoundSettings', 'MUSIC_VOLUME')
+MUSIC_VOLUME = config.getfloat('MusicSettings', 'MUSIC_VOLUME')
 
 """
 Player-related settings, including player's attributes, such as size, speed, health, lives, and more.
@@ -70,7 +70,7 @@ ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
 HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 
 """
-Explosion-related settings, including explosion sound files and explosion animation sizes.
+Explosion-related settings, including explosion sound files.
 """
 EXPLOSION_SOUND = ['explosion1.wav', 'explosion2.wav']
 LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
@@ -86,8 +86,8 @@ class GameStates(Enum):
         RUNNING: Represents the running state of the game.
         EXIT: Represents the exit state of the game.
     """
-    RUNNING = 0
-    EXIT = 1
+    RUNNING = 1
+    EXIT = 2
 
 
 class Colors(Enum):
@@ -121,6 +121,6 @@ class Explosions(Enum):
         SMALL: Represents a small explosion.
         DEATH: Represents a death explosion.
     """
-    LARGE = 0
-    SMALL = 1
-    DEATH = 2
+    LARGE = LARGE_SIZE
+    SMALL = SMALL_SIZE
+    DEATH = DEATH_SIZE
