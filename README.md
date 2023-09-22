@@ -11,6 +11,7 @@ Space Shooter is the Pygame application with sound and music effects that implem
 <details>
   <summary>Table of Contents</summary>
 
+- [System Requirements](#system-requirements)
 - [Installation](#installation)
 - [Launch](#launch)
 - [Gameplay](#gameplay)
@@ -19,6 +20,12 @@ Space Shooter is the Pygame application with sound and music effects that implem
 - [License](#license)
 - [Contact](#contact)
 </details>
+
+## System Requirements
+
+Before you begin, make sure you have the following software installed on your system:
+
+- Python (version 3.x): You can download Python from [python.org](https://www.python.org/downloads/).
 
 ## Installation
 
