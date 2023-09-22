@@ -55,7 +55,7 @@ class GameController:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.game_state = GameStates.EXIT
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and not self.model.player.hidden:
                 self.model.add_rocket(self.model.player.rect.centerx, self.model.player.rect.top)
 
     def update_game(self):
