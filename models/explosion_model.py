@@ -52,8 +52,7 @@ class ExplosionModel(pygame.sprite.Sprite):
         """
         animation = {size: [] for size in Explosions}
         for x in range(9):
-            file = f'explosion{x}.png'
-            image = pygame.image.load(path.join(IMG_DIR, 'explosion', file)).convert()
+            image = pygame.image.load(path.join(IMG_DIR, 'explosion', f'explosion{x}.png')).convert()
             image.set_colorkey(Colors.BLACK.value)
             for size in Explosions:
                 animation[size].append(pygame.transform.scale(image, (size.value, size.value)))
