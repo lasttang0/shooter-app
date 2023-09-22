@@ -50,7 +50,7 @@ Launch the game:
 You can control the ship with the Left, Right arrow buttons, and also use the Space bar to shoot:
 
 
-![Post page](https://github.com/lasttang0/shooter-app/blob/main/screenshots/gameplay.gif?raw=true)
+![Gameplay](https://github.com/lasttang0/shooter-app/blob/main/screenshots/gameplay.gif?raw=true)
 
 
 ## Translations
