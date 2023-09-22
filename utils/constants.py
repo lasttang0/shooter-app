@@ -2,7 +2,6 @@ import configparser
 from enum import Enum
 from os import path
 
-
 config = configparser.ConfigParser()
 config.read('utils/config.ini')
 
@@ -25,7 +24,7 @@ FONT = config.get('ScreenSettings', 'FONT')
 FONT_SIZE = config.getint('ScreenSettings', 'FONT_SIZE')
 
 """
-Sound settings, including music volume.
+Sound settings.
 """
 MUSIC_VOLUME = config.getfloat('SoundSettings', 'MUSIC_VOLUME')
 
@@ -33,7 +32,6 @@ MUSIC_VOLUME = config.getfloat('SoundSettings', 'MUSIC_VOLUME')
 Player-related settings, including player's attributes, such as size, speed, health, lives, and more.
 """
 STARSHIP = 'starship.png'
-PEW = 'pew.wav'
 LIVES = config.getint('PlayerSettings', 'LIVES')
 PLAYER_WIDTH = config.getint('PlayerSettings', 'PLAYER_WIDTH')
 PLAYER_HEIGHT = config.getint('PlayerSettings', 'PLAYER_HEIGHT')
@@ -65,6 +63,7 @@ ROTATION_SPEED_MAX = config.getint('AsteroidSettings', 'ROTATION_SPEED_MAX')
 """
 Rocket-related settings, including rocket dimensions and speed.
 """
+PEW = 'pew.wav'
 ROCKET_WIDTH = config.getint('RocketSettings', 'ROCKET_WIDTH')
 ROCKET_HEIGHT = config.getint('RocketSettings', 'ROCKET_HEIGHT')
 ROCKET_SPEED = config.getint('RocketSettings', 'ROCKET_SPEED')
@@ -77,7 +76,6 @@ EXPLOSION_SOUND = ['explosion1.wav', 'explosion2.wav']
 LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
 SMALL_SIZE = config.getint('ExplosionSettings', 'SMALL_SIZE')
 DEATH_SIZE = config.getint('ExplosionSettings', 'DEATH_SIZE')
-
 
 
 class GameStates(Enum):
