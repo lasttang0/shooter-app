@@ -1,7 +1,6 @@
 import pygame
 
 from models.game_model import GameModel
-from models.explosion_model import ExplosionModel
 from utils.constants import GameStates, FPS, ASTEROID_WIDTH, Explosions, DYING_TIME, HEALTH
 
 
@@ -71,20 +70,18 @@ class GameController:
             self.model.add_explosion(hit.rect.center, Explosions.LARGE)
             self.model.add_asteroids(len(hits))
 
-        collides = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, True,
+        collisions = pygame.sprite.spritecollide(self.model.player, self.model.asteroids, True,
                                                pygame.sprite.collide_circle)
-        for collide in collides:
-            self.model.player.health -= collide.radius
-            self.model.add_explosion(collide.rect.center, Explosions.SMALL)
-            self.model.add_asteroids(len(collides))
+        for collision in collisions:
+            self.model.player.health -= collision.radius
+            self.model.add_explosion(collision.rect.center, Explosions.SMALL)
+            self.model.add_asteroids(len(collisions))
             if self.model.player.health <= 0:
-                self.model.add_explosion(collide.rect.center, Explosions.DEATH)
+                self.model.add_explosion(collision.rect.center, Explosions.DEATH)
                 self.model.player.death_moment = pygame.time.get_ticks()
                 self.model.player.hide()
                 self.model.player.lives -= 1
                 self.model.player.health = HEALTH
         if (self.model.player.lives == 0 and self.model.player.death_moment and
                 pygame.time.get_ticks() - self.model.player.death_moment >= DYING_TIME):
-            # self.model.player.kill()
-            # self.game_state = GameStates.EXIT
             self.game_over = True
