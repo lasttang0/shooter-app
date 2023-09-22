@@ -6,15 +6,49 @@ from utils.constants import Explosions
 
 
 class MockSound:
+    """
+    A mock class for pygame.mixer.Sound to simulate sound playback.
+
+    This class is used in unit testing to replace the actual pygame.mixer.Sound class.
+    It provides a mock implementation of the play method to track whether the play
+    method has been called.
+
+    Attributes:
+        play_called (bool): A flag indicating whether the play method has been called.
+    """
+
     def __init__(self):
+        """
+        Initialize a new instance of MockSound.
+
+        Initializes the MockSound instance and sets the play_called flag to False.
+        """
         self.play_called = False
 
     def play(self):
+        """
+        Simulate the play method of pygame.mixer.Sound.
+
+        This method sets the play_called flag to True when called, simulating the behavior
+        of the play method in pygame.mixer.Sound.
+        """
         self.play_called = True
 
 
-# Тесты для класса ExplosionModel
 def test_explosion_model_creation(game_controller):
+    """
+    Test the creation of an ExplosionModel instance.
+
+    Args:
+        game_controller: A fixture to initialize the game controller.
+
+    The test checks if an ExplosionModel instance is created correctly with the provided center
+    coordinates and size. It verifies the type of its attributes, including animation, image, rect,
+    frame, and frame_rate.
+
+    Returns:
+        None
+    """
     center = (100, 100)
     size = Explosions.LARGE
     explosion = ExplosionModel(center, size)
@@ -30,6 +64,17 @@ def test_explosion_model_creation(game_controller):
 
 
 def test_explosion_model_kill(game_controller):
+    """
+    Test the kill method of ExplosionModel.
+
+    Args:
+        game_controller: A fixture to initialize the game controller.
+
+    The test checks if the kill method correctly sets the sprite's alive status to False.
+
+    Returns:
+        None
+    """
     center = (100, 100)
     size = Explosions.LARGE
     explosion = ExplosionModel(center, size)
@@ -39,9 +84,22 @@ def test_explosion_model_kill(game_controller):
     assert explosion.alive() is False
 
 
-# Тесты для класса ExplosionModel
 def test_explosion_model_play_sound(game_controller, monkeypatch):
-    # Мокируем pygame.mixer.Sound и его метод play
+    """
+    Test the play_sound static method of ExplosionModel.
+
+    Args:
+        game_controller: A fixture to initialize the game controller.
+        monkeypatch: A fixture for patching methods.
+
+    The test mocks the pygame.mixer.Sound class and its play method using the monkeypatch
+    library to ensure that the play_sound method of ExplosionModel calls the play method of the
+    mocked Sound class.
+
+    Returns:
+        None
+    """
+    # Mock pygame.mixer.Sound and its play method
     mock_sound = MagicMock()
     mock_play = MagicMock()
     mock_sound.play = mock_play
@@ -49,5 +107,5 @@ def test_explosion_model_play_sound(game_controller, monkeypatch):
 
     ExplosionModel.play_sound()
 
-    # Утверждаем, что метод play был вызван
+    # Assert that the play method was called
     mock_play.assert_called_once()

@@ -4,6 +4,9 @@ from utils.constants import HIT_RADIUS
 
 
 def test_rocket_model_creation(pygame_initialized):
+    """
+    Test the creation of a RocketModel object.
+    """
     x, y = 100, 200
     rocket = RocketModel(x, y)
 
@@ -17,6 +20,9 @@ def test_rocket_model_creation(pygame_initialized):
 
 
 def test_rocket_model_update(pygame_initialized):
+    """
+    Test the update method of the RocketModel class.
+    """
     x, y = 100, 200
     rocket = RocketModel(x, y)
     initial_rect_y = rocket.rect.y
