@@ -68,7 +68,6 @@ class GameController:
                                           pygame.sprite.collide_circle)
         for hit in hits:
             self.model.score += ASTEROID_WIDTH - hit.radius
-            ExplosionModel.play_sound()
             self.model.add_explosion(hit.rect.center, Explosions.LARGE)
             self.model.add_asteroids(len(hits))
 
@@ -76,7 +75,6 @@ class GameController:
                                                pygame.sprite.collide_circle)
         for collide in collides:
             self.model.player.health -= collide.radius
-            ExplosionModel.play_sound()
             self.model.add_explosion(collide.rect.center, Explosions.SMALL)
             self.model.add_asteroids(len(collides))
             if self.model.player.health <= 0:

@@ -40,6 +40,7 @@ class ExplosionModel(pygame.sprite.Sprite):
         self.frame = 0
         self.last_update = pygame.time.get_ticks()
         self.frame_rate = 50
+        pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
 
     @staticmethod
     def explosion_animation():
@@ -79,9 +80,6 @@ class ExplosionModel(pygame.sprite.Sprite):
                 self.rect = self.image.get_rect()
                 self.rect.center = center
 
-    @staticmethod
-    def play_sound():
-        """
-        Play a random explosion sound.
-        """
-        pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
+
+
+

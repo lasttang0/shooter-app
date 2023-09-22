@@ -1,7 +1,9 @@
 import random
+from os import path
+
 import pygame
 from utils.constants import (Colors,
-                             ROCKET_WIDTH, ROCKET_HEIGHT, ROCKET_SPEED, HIT_RADIUS)
+                             ROCKET_WIDTH, ROCKET_HEIGHT, ROCKET_SPEED, HIT_RADIUS, SND_DIR, PEW)
 
 
 class RocketModel(pygame.sprite.Sprite):
@@ -34,6 +36,7 @@ class RocketModel(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.speed_y = ROCKET_SPEED
         self.radius = HIT_RADIUS
+        pygame.mixer.Sound(path.join(SND_DIR, PEW)).play()
 
     def update(self):
         """

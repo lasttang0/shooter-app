@@ -1,5 +1,3 @@
-from unittest.mock import MagicMock
-
 import pygame
 from models.explosion_model import ExplosionModel
 from utils.constants import Explosions
@@ -84,28 +82,4 @@ def test_explosion_model_kill(game_controller):
     assert explosion.alive() is False
 
 
-def test_explosion_model_play_sound(game_controller, monkeypatch):
-    """
-    Test the play_sound static method of ExplosionModel.
 
-    Args:
-        game_controller: A fixture to initialize the game controller.
-        monkeypatch: A fixture for patching methods.
-
-    The test mocks the pygame.mixer.Sound class and its play method using the monkeypatch
-    library to ensure that the play_sound method of ExplosionModel calls the play method of the
-    mocked Sound class.
-
-    Returns:
-        None
-    """
-    # Mock pygame.mixer.Sound and its play method
-    mock_sound = MagicMock()
-    mock_play = MagicMock()
-    mock_sound.play = mock_play
-    monkeypatch.setattr(pygame.mixer, 'Sound', lambda x: mock_sound)
-
-    ExplosionModel.play_sound()
-
-    # Assert that the play method was called
-    mock_play.assert_called_once()
