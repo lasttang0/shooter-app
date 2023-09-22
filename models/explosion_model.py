@@ -1,7 +1,7 @@
 import random
 from os import path
 import pygame
-from utils.constants import IMG_DIR, Colors, Explosions, SND_DIR, EXPLOSION_SOUND
+from utils.constants import IMG_DIR, Colors, Explosions, SND_DIR, EXPLOSION_SOUNDS
 
 
 class ExplosionModel(pygame.sprite.Sprite):
@@ -40,7 +40,7 @@ class ExplosionModel(pygame.sprite.Sprite):
         self.frame = 0
         self.last_update = pygame.time.get_ticks()
         self.frame_rate = 50
-        pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
+        pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUNDS))).play()
 
     @staticmethod
     def explosion_animation():

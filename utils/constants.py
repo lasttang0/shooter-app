@@ -72,7 +72,7 @@ HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 """
 Explosion-related settings, including explosion sound files.
 """
-EXPLOSION_SOUND = ['explosion1.wav', 'explosion2.wav']
+EXPLOSION_SOUNDS = ['explosion1.wav', 'explosion2.wav']
 LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
 SMALL_SIZE = config.getint('ExplosionSettings', 'SMALL_SIZE')
 DEATH_SIZE = config.getint('ExplosionSettings', 'DEATH_SIZE')
