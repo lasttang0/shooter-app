@@ -4,6 +4,11 @@ from models.game_model import GameModel
 
 
 def main():
+    """
+    The main function of the Space Shooter game.
+
+    Initializes the game's view, model, and controller, and starts the game loop.
+    """
     view = GameView()
     model = GameModel()
     controller = GameController(model, view)
