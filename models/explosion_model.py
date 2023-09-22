@@ -1,13 +1,36 @@
 import random
 from os import path
-
 import pygame
-
 from utils.constants import IMG_DIR, Colors, Explosions, LARGE_SIZE, SMALL_SIZE, DEATH_SIZE, SND_DIR, EXPLOSION_SOUND
 
 
 class ExplosionModel(pygame.sprite.Sprite):
+    """
+    ExplosionModel class represents an explosion in the game.
+
+    Attributes:
+        size (int): The size of the explosion (LARGE, SMALL, DEATH).
+        animation (dict): A dictionary containing lists of explosion images for each size.
+        image (pygame.Surface): The current image of the explosion.
+        rect (pygame.Rect): The rectangular bounds of the explosion.
+        frame (int): The current frame of the explosion animation.
+        last_update (int): The time of the last frame update.
+        frame_rate (int): The frame rate of the explosion animation.
+
+    Methods:
+        explosion_animation(): Create the explosion animation for different sizes.
+        update(): Update the explosion animation.
+        play_sound(): Play a random explosion sound.
+    """
+
     def __init__(self, center, size):
+        """
+        Initialize an instance of ExplosionModel.
+
+        Args:
+            center (tuple): The center coordinates of the explosion.
+            size (int): The size of the explosion (LARGE, SMALL, DEATH).
+        """
         pygame.sprite.Sprite.__init__(self)
         self.size = size
         self.animation = self.explosion_animation()
@@ -20,6 +43,12 @@ class ExplosionModel(pygame.sprite.Sprite):
 
     @staticmethod
     def explosion_animation():
+        """
+        Create the explosion animation for different sizes.
+
+        Returns:
+            dict: A dictionary containing lists of explosion images for each size.
+        """
         animation = {
             Explosions.LARGE: [],
             Explosions.SMALL: [],
@@ -35,6 +64,9 @@ class ExplosionModel(pygame.sprite.Sprite):
         return animation
 
     def update(self):
+        """
+        Update the explosion animation.
+        """
         now = pygame.time.get_ticks()
         if now - self.last_update > self.frame_rate:
             self.last_update = now
@@ -49,4 +81,7 @@ class ExplosionModel(pygame.sprite.Sprite):
 
     @staticmethod
     def play_sound():
+        """
+        Play a random explosion sound.
+        """
         pygame.mixer.Sound(path.join(SND_DIR, random.choice(EXPLOSION_SOUND))).play()
