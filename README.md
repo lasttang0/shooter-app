@@ -75,7 +75,7 @@ Distributed under the MIT License. See LICENSE.md for more information
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/lasttang0/blog-app](https://github.com/lasttang0/blog-app)
+Project Link: [https://github.com/lasttang0/shooter-app](https://github.com/lasttang0/shooter-app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
