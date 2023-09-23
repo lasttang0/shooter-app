@@ -42,13 +42,13 @@ class AsteroidModel(pygame.sprite.Sprite):
         self.image_orig.set_colorkey(Colors.BLACK.value)
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(SCREEN_WIDTH - self.rect.width)
-        self.rect.y = random.randrange(SPAWN_Y_MIN, SPAWN_Y_MAX)
-        self.speed_x = random.randrange(ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX)
-        self.speed_y = random.randrange(ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
+        self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
+        self.rect.y = random.randint(SPAWN_Y_MIN, SPAWN_Y_MAX)
+        self.speed_x = random.randint(ASTEROID_SPEED_X_MIN, ASTEROID_SPEED_X_MAX)
+        self.speed_y = random.randint(ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
         self.radius = int(self.rect.width * 0.75 / 2)
         self.rotation = 0
-        self.rotation_speed = random.randrange(ROTATION_SPEED_MIN, ROTATION_SPEED_MAX)
+        self.rotation_speed = random.randint(ROTATION_SPEED_MIN, ROTATION_SPEED_MAX)
         self.last_update = pygame.time.get_ticks()
 
     def update(self):
@@ -58,9 +58,9 @@ class AsteroidModel(pygame.sprite.Sprite):
         self.rect.x += self.speed_x
         self.rect.y += self.speed_y
         if self.rect.top > SCREEN_HEIGHT + 10 or self.rect.left < -25 or self.rect.right > SCREEN_WIDTH + 20:
-            self.rect.x = random.randrange(SCREEN_WIDTH - self.rect.width)
-            self.rect.y = random.randrange(SPAWN_Y_MIN, SPAWN_Y_MAX)
-            self.speed_y = random.randrange(ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
+            self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
+            self.rect.y = random.randint(SPAWN_Y_MIN, SPAWN_Y_MAX)
+            self.speed_y = random.randint(ASTEROID_SPEED_Y_MIN, ASTEROID_SPEED_Y_MAX)
         self.rotate()
 
     def rotate(self):
