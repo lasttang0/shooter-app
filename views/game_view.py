@@ -3,9 +3,10 @@ from os import path
 
 import pygame
 
-from utils.constants import (IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FONT_SIZE,
+from utils.constants import (IMG_DIR, SKY, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, SCORE_SIZE,
                              Colors, SND_DIR, SPACE_MUSIC, BAR_HEIGHT, MUSIC_VOLUME, STARSHIP, PLAYER_WIDTH,
-                             PLAYER_HEIGHT, FPS)
+                             PLAYER_HEIGHT, FPS, SCORE, CAPTION, TITLE, TITLE_SIZE, CONTROL, CONTROL_SIZE, INPUT_WAIT,
+                             INPUT_WAIT_SIZE)
 
 
 class GameView:
@@ -17,6 +18,7 @@ class GameView:
         clock (pygame.time.Clock): The Pygame clock to control the frame rate.
         background (pygame.Surface): The background image of the game.
     """
+
     def __init__(self):
         """
         Initializes the GameView class and initializes Pygame.
@@ -24,7 +26,7 @@ class GameView:
         pygame.init()
         self.play_music()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Space Shooter Game")
+        pygame.display.set_caption(CAPTION)
         self.clock = pygame.time.Clock()
         self.background = pygame.image.load(path.join(IMG_DIR, SKY)).convert()
 
@@ -35,10 +37,9 @@ class GameView:
         Waits for user input to begin the game.
         """
         self.screen.blit(self.background, self.background.get_rect())
-        self.draw_text(self.screen, "Shooter app!", 64, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 4)
-        self.draw_text(self.screen, "Left / right to move, Space to fire", 22,
-                       SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        self.draw_text(self.screen, "Press a key to begin", 18, SCREEN_WIDTH / 2, SCREEN_HEIGHT * 3 / 4)
+        self.draw_text(self.screen, TITLE, TITLE_SIZE, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 4)
+        self.draw_text(self.screen, CONTROL, CONTROL_SIZE, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        self.draw_text(self.screen, INPUT_WAIT, INPUT_WAIT_SIZE, SCREEN_WIDTH / 2, SCREEN_HEIGHT * 3 / 4)
         pygame.display.flip()
         waiting = True
         while waiting:
@@ -69,10 +70,10 @@ class GameView:
         self.screen.fill(Colors.BLACK.value)
         self.screen.blit(self.background, self.background.get_rect())
         model.all_sprites.draw(self.screen)
-        self.draw_text(self.screen, f'Score: {str(model.score)}', FONT_SIZE, SCREEN_WIDTH * 6/7, 10)
+        self.draw_text(self.screen, f'{SCORE} {str(model.score)}', SCORE_SIZE, SCREEN_WIDTH * 6 / 7, 10)
         self.draw_health_bar(self.screen, 5, 10, model.player.health)
         life_pic = pygame.transform.scale(pygame.image.load(path.join(IMG_DIR, STARSHIP)).convert(),
-                                            (PLAYER_WIDTH / 3, PLAYER_HEIGHT / 3))
+                                          (PLAYER_WIDTH / 3, PLAYER_HEIGHT / 3))
         self.draw_lives(self.screen, 5, 30, model.player.lives, life_pic)
         pygame.display.flip()
 

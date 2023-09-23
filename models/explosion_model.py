@@ -1,7 +1,8 @@
 import random
 from os import path
 import pygame
-from utils.constants import IMG_DIR, Colors, Explosions, SND_DIR, EXPLOSION_SOUNDS
+from utils.constants import (Colors, Explosions,
+                             IMG_DIR, SND_DIR, EXPLOSION_SOUNDS, FRAMES, EXPLOSION_PNG_DIR, EXPLOSION_PNG_PREFIX)
 
 
 class ExplosionModel(pygame.sprite.Sprite):
@@ -51,8 +52,8 @@ class ExplosionModel(pygame.sprite.Sprite):
             dict: A dictionary containing lists of explosion images for each size.
         """
         animation = {size: [] for size in Explosions}
-        for x in range(9):
-            image = pygame.image.load(path.join(IMG_DIR, 'explosion', f'explosion{x}.png')).convert()
+        for x in range(FRAMES):
+            image = pygame.image.load(path.join(IMG_DIR, EXPLOSION_PNG_DIR, f'{EXPLOSION_PNG_PREFIX}{x}.png')).convert()
             image.set_colorkey(Colors.BLACK.value)
             for size in Explosions:
                 animation[size].append(pygame.transform.scale(image, (size.value, size.value)))

@@ -12,16 +12,27 @@ IMG_DIR = path.join(path.dirname(__file__), '..\\assets\\images')
 SND_DIR = path.join(path.dirname(__file__), '..\\assets\\sounds')
 
 """
-Screen and display settings, including screen dimensions, frames per second (FPS), font settings,
-and asset file paths.
+Screen and display settings, including screen dimensions, frames per second (FPS), and asset file paths.
 """
 SKY = 'sky.png'
 SPACE_MUSIC = 'space.wav'
 SCREEN_WIDTH = config.getint('ScreenSettings', 'SCREEN_WIDTH')
 SCREEN_HEIGHT = config.getint('ScreenSettings', 'SCREEN_HEIGHT')
 FPS = config.getint('ScreenSettings', 'FPS')
-FONT = config.get('ScreenSettings', 'FONT')
-FONT_SIZE = config.getint('ScreenSettings', 'FONT_SIZE')
+
+"""
+Text settings, including font and font sizes, and open screen text lines.
+"""
+FONT = config.get('TextSettings', 'FONT')
+CAPTION = config.get('TextSettings', 'CAPTION')
+SCORE = config.get('TextSettings', 'SCORE')
+SCORE_SIZE = config.getint('TextSettings', 'SCORE_SIZE')
+TITLE = config.get('TextSettings', 'TITLE')
+TITLE_SIZE = config.getint('TextSettings', 'TITLE_SIZE')
+CONTROL = config.get('TextSettings', 'CONTROL')
+CONTROL_SIZE = config.getint('TextSettings', 'CONTROL_SIZE')
+INPUT_WAIT = config.get('TextSettings', 'INPUT_WAIT')
+INPUT_WAIT_SIZE = config.getint('TextSettings', 'INPUT_WAIT_SIZE')
 
 """
 Music settings.
@@ -46,7 +57,8 @@ DYING_TIME = config.getint('PlayerSettings', 'DYING_TIME')
 """
 Asteroid-related settings, including lists of asteroid images, sizes, and parameters like speed and rotation.
 """
-ASTEROID_LIST = ['asteroid1.png', 'asteroid2.png', 'asteroid3.png', 'asteroid4.png']
+ASTEROIDS_PNG_DIR = IMG_DIR + '\\asteroids'
+ASTEROIDS_LIST = [f'asteroid{x}.png' for x in range(config.getint('AsteroidSettings', 'TYPES'))]
 ASTEROID_SIZES = [0.8, 1, 1, 1, 1.4, 1.5, 1.75]
 COUNT = config.getint('AsteroidSettings', 'COUNT')
 ASTEROID_WIDTH = config.getint('AsteroidSettings', 'ASTEROID_WIDTH')
@@ -73,6 +85,9 @@ HIT_RADIUS = config.getint('RocketSettings', 'HIT_RADIUS')
 Explosion-related settings, including explosion sound files.
 """
 EXPLOSION_SOUNDS = ['explosion1.wav', 'explosion2.wav']
+EXPLOSION_PNG_DIR = IMG_DIR + '\\explosion'
+EXPLOSION_PNG_PREFIX = 'explosion'
+FRAMES = config.getint('ExplosionSettings', 'FRAMES')
 LARGE_SIZE = config.getint('ExplosionSettings', 'LARGE_SIZE')
 SMALL_SIZE = config.getint('ExplosionSettings', 'SMALL_SIZE')
 DEATH_SIZE = config.getint('ExplosionSettings', 'DEATH_SIZE')

@@ -3,7 +3,7 @@ import pygame
 from utils.constants import (IMG_DIR, Colors,
                              SCREEN_WIDTH, SCREEN_HEIGHT,
                              PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED, SPEED_CHANGE,
-                             COLLIDE_RADIUS, STARSHIP, HEALTH, LIVES, HIDING_TIME, )
+                             COLLIDE_RADIUS, STARSHIP, HEALTH, LIVES, HIDING_TIME)
 
 
 class PlayerModel(pygame.sprite.Sprite):
